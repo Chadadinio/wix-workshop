@@ -1,5 +1,5 @@
 variable "subnets_cidr_block"{
-  description = "The CIDR block for the subnet"
+  description = "The CIDR block of the subnets"
   type        = list(string)
   default     = ["192.168.7.0/24", "192.168.8.0/24"]
 }
@@ -10,18 +10,18 @@ variable "availability_zones" {
   default     = ["eu-west-1a", "eu-west-1b"]
 }
 variable "region" {
-  description = "The region for the provider"
+  description = "The region"
   type        = string
   default     = "eu-west-1"
 }
 
 variable "subnet_name" {
-  description = "The name to tag the subnet"
+  description = "The name of the subnets"
   type        = list(string)
   default     = ["elad_subnet1", "elad_subnet2"]
 }
 variable "vpc_id" {
-  description = "The ID of the VPC where the subnet will be created"
+  description = "The ID of the VPC"
   type        = string
   default     = "vpc-01b834daa2d67cdaa"
 }
@@ -31,7 +31,7 @@ variable "vpc_cidr_block" {
   default     = "192.168.0.0/16"
 }
 variable "routetable_name" {
-  description = "The name to tag the route-table"
+  description = "The name of the route-table"
   type        = string
   default     = "elad_rtb"
 }
@@ -51,7 +51,7 @@ variable "cluster_name" {
   default     = "elad-cluster2"
 }
 variable "instance_type" {
-  description = "The instance type for the EKS managed node group"
+  description = "The instance type"
   type        = string
   default     = "t2.small"
 }
