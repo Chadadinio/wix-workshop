@@ -34,7 +34,7 @@ resource "aws_route_table_association" "associate_subnet_two" {
 }
 resource "aws_eks_access_policy_association" "eks_users_access" {
   cluster_name  = var.cluster_name
-  policy_arn    = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+  policy_arn    = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
   principal_arn = "arn:aws:iam::730335218716:user/elad-user"
 
   access_scope {
