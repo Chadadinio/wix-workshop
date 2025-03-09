@@ -48,7 +48,7 @@ variable "cluster_version"{
 variable "cluster_name" {
   description = "The cluster name"
   type        = string
-  default     = "elad-cluster"
+  default     = "elad-cluster2"
 }
 variable "instance_type" {
   description = "The instance type for the EKS managed node group"
