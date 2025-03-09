@@ -32,6 +32,15 @@ resource "aws_route_table_association" "associate_subnet_two" {
   subnet_id      = local.subnet_ids[1]
   route_table_id = local.route_table_id
 }
+resource "aws_eks_access_policy_association" "eks_users_access" {
+  cluster_name  = var.cluster_name
+  policy_arn    = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+  principal_arn = arn:aws:iam::730335218716:user/elad-user
+
+  access_scope {
+    type = "cluster"
+  }
+}
 
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
