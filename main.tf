@@ -40,6 +40,7 @@ resource "aws_eks_access_policy_association" "eks_users_access" {
   access_scope {
     type = "cluster"
   }
+  depends_on = [module.eks]
 }
 
 module "eks" {
