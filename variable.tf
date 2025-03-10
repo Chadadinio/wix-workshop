@@ -55,3 +55,10 @@ variable "instance_type" {
   type        = string
   default     = "t2.small"
 }
+variable "users_arn" {
+  type    = list(string)
+  default = [
+    "arn:aws:iam::730335218716:user/elad-user",
+    "arn:aws:iam::730335218716:user/esterh"
+  ]
+}
