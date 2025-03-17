@@ -1,7 +1,7 @@
 variable "subnets_cidr_block"{
   description = "The CIDR block of the subnets"
   type        = list(string)
-  default     = ["192.168.7.0/24", "192.168.8.0/24"]
+  default     = ["192.168.60.0/24", "192.168.61.0/24"]
 }
 
 variable "availability_zones" {
