@@ -32,19 +32,6 @@ resource "aws_route_table_association" "associate_subnet_two" {
   subnet_id      = local.subnet_ids[1]
   route_table_id = local.route_table_id
 }
-resource "aws_eks_access_policy_association" "eks_user_access" {
-  for_each = toset(var.users_arn)
-
-  cluster_name  = var.cluster_name
-  principal_arn = each.value
-  policy_arn    = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
-
-  access_scope {
-    type = "cluster"
-  }
-  depends_on = [module.eks]
-}
-
 
 #resource "aws_eks_access_policy_association" "eks_users_access" {
 #  cluster_name  = var.cluster_name
