@@ -7,8 +7,8 @@
             "Principal": "*",
             "Action": "s3:*",
             "Resource": [
-                "arn:aws:s3:::bucket-elad",
-                "arn:aws:s3:::bucket-elad/*"
+                "arn:aws:s3:::eladchadad-bucket",
+                "arn:aws:s3:::eladchadad-bucket/*"
             ],
             "Condition": {
                 "IpAddress": {
