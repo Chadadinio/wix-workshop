@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-app
+  annotations:
+    # Use Network Load Balancer
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+
+    # Use instance for standard deployments
+    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "instance"
+
+    # SSL Configuration with ACM certificate ARN 
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:eu-west-1:730335218716:certificate/8f4eeeea-9a1d-443c-a8c8-4de7f8b19aec
+    
+    # Health check protocol for target group. Common options are TCP (default) or HTTP.
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-protocol: "TCP"
+
+    # This annotation tells the AWS Load Balancer Controller to use HTTPS
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: HTTPS
+    
+    # Specifies which ports should use SSL/TLS
+    service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "https"
+    
+    # Load Balancer scheme: "internet-facing" for public or "internal" for private access
+    service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
+     
+    # Load Balancer listener ports (HTTP and HTTPS)
+    service.beta.kubernetes.io/aws-load-balancer-listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+    
+    # Configure cross-zone load balancing
+    service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
+spec:
+  selector:
+    app: test-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+    - protocol: TCP
+      port: 443
+      targetPort: 80
+  type: LoadBalancer
